@@ -1,0 +1,12 @@
+server:
+  port: 8761
+  
+  
+spring:
+ jpa:
+   database-platform: org.hibernate.dialect.MySQL5InnoDBDialect  
+  
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false  

@@ -1,0 +1,50 @@
+package com.microservice.demo.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.microservice.demo.dto.employeeResponseDto;
+import com.microservice.demo.entity.employee;
+import com.microservice.demo.repository.employeeRepo;
+
+@Service
+public class EmployeeService {
+	
+	
+	@Autowired
+	employeeRepo repo;
+	
+	
+	
+	@Autowired
+	RestTemplate rest;
+	
+	
+	
+	
+	
+	public employee saveEmployee( employee emp)
+	{
+		employee empobj = repo.save(emp);
+		
+		return empobj;
+		
+	}
+	
+	
+	public employeeResponseDto getEmpById (Long id)
+	{
+		Optional<employee> findById = repo.findById(id);
+		
+		employee emp = findById.get();
+		
+		
+		rest.exchange(null, null);
+		
+	}
+	
+
+}

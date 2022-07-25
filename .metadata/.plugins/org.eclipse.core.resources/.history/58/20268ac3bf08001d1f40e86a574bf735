@@ -1,0 +1,23 @@
+package com.microservice.demo.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.microservice.demo.entity.employee;
+import com.microservice.demo.repository.employeeRepo;
+
+@Service
+public class EmployeeService {
+	
+	
+	@Autowired
+	employeeRepo repo;
+	
+	public employee saveEmployee( employee emp)
+	{
+		employee emp = repo.save(emp);
+		
+	}
+	
+
+}

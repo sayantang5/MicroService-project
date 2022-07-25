@@ -1,0 +1,5 @@
+package com.example.Microservice.service;
+
+public class DepartmentService {
+
+}

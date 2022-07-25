@@ -1,0 +1,11 @@
+package com.microservice.demo.dto;
+
+import com.microservice.demo.entity.employee;
+
+public class employeeResponseDto {
+	
+	private employee emp;
+	
+	private departmentDto deptdto;
+
+}

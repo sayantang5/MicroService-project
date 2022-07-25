@@ -1,0 +1,24 @@
+package com.example.Microservice.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class FallbackController {
+
+	@GetMapping("/userServiceFallback")
+	public String userServiceFallbackMethod() {
+
+		return " user service is temporarily down..!! please try after some time ";
+
+	}
+	
+	
+	
+	@GetMapping("/departmentServiceFallbac")
+	public String departmentServiceFallbackMethod() {
+
+		return " department  service is temporarily down..!! please try after some time ";
+
+	}
+}
