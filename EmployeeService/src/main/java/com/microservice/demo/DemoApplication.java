@@ -19,9 +19,15 @@ public class DemoApplication {
     @LoadBalanced
 	public  RestTemplate getRestTemplate(){
 		
+	
 		
+        System.out.println("Domo1");
+		
+		System.out.println("Domo2");
+
 		system.out.println("This is demo3");
 		
+
 		
 		return  new RestTemplate() ;
 	}
