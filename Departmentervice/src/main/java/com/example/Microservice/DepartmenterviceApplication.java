@@ -13,6 +13,8 @@ public class DepartmenterviceApplication {
 		
 		
 		System.out.println("done");
+		System.out.println("logging");
+		
 	}
 	
 	
