@@ -20,20 +20,15 @@ public class DemoApplication {
 	public  RestTemplate getRestTemplate(){
 		
 		
-
-		
         System.out.println("Domo1");
 		
 		System.out.println("Domo2");
 
-		System.out.println("This is demo3");
-		
-		System.out.println("This is demo3");
+        System.out.println("This is demo3");
 		
 		System.out.println("This is demo4");
 		
 
-		
 		return  new RestTemplate() ;
 	}
 
