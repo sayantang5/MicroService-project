@@ -20,6 +20,9 @@ public class DemoApplication {
 	public  RestTemplate getRestTemplate(){
 		
 		
+		system.out.println("This is demo3");
+		
+		
 		return  new RestTemplate() ;
 	}
 
