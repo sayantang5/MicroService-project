@@ -8,6 +8,8 @@ public class ServletInitializer extends SpringBootServletInitializer {
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(DemoApplication.class);
+		
+		System.out.println("This is added for feature three testing");
 	}
 
 }
