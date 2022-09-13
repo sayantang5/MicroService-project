@@ -10,6 +10,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 		return application.sources(DemoApplication.class);
 		
 		System.out.println("This is added for feature three testing");
+		System.out.println("This is added for feature 4 testing");
 	}
 
 }
