@@ -30,7 +30,10 @@ public class DemoApplication {
 		
 		System.out.println("This is feature 3");
 		
+<<<<<<< HEAD
 		System.out.println("This is feature 4 changes");
+=======
+>>>>>>> 9568bdc222415d23fa01ef89d7f9c84fe9b2c780
 		
 		
 		
