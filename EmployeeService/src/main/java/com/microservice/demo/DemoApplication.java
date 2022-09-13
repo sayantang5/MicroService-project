@@ -28,6 +28,8 @@ public class DemoApplication {
 		
 		System.out.println("This is demo4");
 		
+		System.out.println("This is feature 3");
+		
 
 		return  new RestTemplate() ;
 	}
