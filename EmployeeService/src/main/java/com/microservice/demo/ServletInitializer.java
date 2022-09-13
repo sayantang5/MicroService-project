@@ -11,6 +11,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 		
 		System.out.println("This is added for feature three testing");
 		System.out.println("This is added for feature 4 testing");
+		System.out.println("This is added for newly after feature 4 branch pushed ");
 	}
 
 }
