@@ -30,7 +30,7 @@ public class DemoApplication {
 		
 		System.out.println("This is feature 3");
 		
-		System.out.println("This is from main branch feature 4 update to create merge conflict");
+		
 		
 		
 
