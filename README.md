@@ -1,21 +1,23 @@
-List<List<ZellePaymentMQ>> batches = splitIntoBatches(convertZellePaymentRequest, 10);
-        List<CompletableFuture<List<PaymentResponse>>> futures = new ArrayList<>();
+@Service
+public class AsyncBatchProcessor {
 
-        for (List<ZellePaymentMQ> batch : batches) {
-            CompletableFuture<List<PaymentResponse>> future =
-                asyncBatchProcessor.processBatchAsync(batch, routeServiceInfo, batchID, new ArrayList<>(validationFailedPaymentStatus));
-            futures.add(future);
+    @Autowired
+    private WorkflowContextService workflowContextService;
+
+    @Async("paymentExecutor")
+    public CompletableFuture<List<PaymentResponse>> processBatchAsync(
+        List<ZellePaymentMQ> batch,
+        RouteServiceInfo routeServiceInfo,
+        String batchId,
+        List<PaymentStatus> validationFailedPaymentStatus
+    ) {
+        routeServiceInfo.setZellePaymentMQ(batch);
+        PaymentResponse response = workflowContextService.ZelleprocessPayment(routeServiceInfo, batchId, new PaymentResponse());
+
+        if (Objects.nonNull(response.getPaymentResponse())) {
+            response.getPaymentResponse().getPaymentStatus().addAll(validationFailedPaymentStatus);
         }
 
-        CompletableFuture.allOf(futures.toArray(new CompletableFuture[0])).join();
-
-        List<PaymentResponse> allResponses = futures.stream()
-            .flatMap(f -> f.join().stream())
-            .collect(Collectors.toList());
-
-        // You can aggregate `allResponses` or process them further here
-        allResponses.forEach(response -> {
-            LOGGER.info("Async batch response: {}", response);
-        });
-
-        validationFailedPaymentStatus.clear();
+        return CompletableFuture.completedFuture(Collections.singletonList(response));
+    }
+}
