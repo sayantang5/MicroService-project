@@ -1,18 +1,26 @@
-@Configuration
-@EnableAsync
-public class AsyncConfig {
-
-    @Value("${payment.async.threadCount:5}")
-    private int threadCount;
-
-    @Bean(name = "paymentExecutor")
-    public Executor taskExecutor() {
-        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(threadCount);
-        executor.setMaxPoolSize(threadCount);
-        executor.setQueueCapacity(100);
-        executor.setThreadNamePrefix("PaymentExecutor-");
-        executor.initialize();
-        return executor;
-    }
-}
+if (statusFlag) {
+			
+			if(asyncEnabled) {
+				
+				List<List<ZellePaymentMQ>> splitIntoBatches = splitIntoBatches(convertZellePaymentRequest,10);
+				
+				
+				
+				
+			}else {
+				
+				
+			routeServiceInfo.setZellePaymentMQ(convertZellePaymentRequest);
+			LOGGER.info("Workflow Started for ZelleprocessPayment " + LocalDateTime.now());
+			PaymentResponse = workflowContextService.ZelleprocessPayment(routeServiceInfo, batchID, PaymentResponse);
+			if (Objects.nonNull(PaymentResponse.getPaymentResponse())) {
+				PaymentResponse.getPaymentResponse().getPaymentStatus().addAll(validationFailedPaymentStatus);
+			}
+			validationFailedPaymentStatus.clear();
+			LOGGER.info("Workflow ended for ZelleprocessPayment at time" + LocalDateTime.now() + " with status +"
+					+ PaymentResponse.toString());
+			
+			
+			}
+			
+		}
